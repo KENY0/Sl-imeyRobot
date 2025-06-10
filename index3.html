@@ -1,0 +1,1778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday My Fav Robot - Kawaii Home</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: url('images/background.jpg') center center / cover no-repeat fixed;
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Overlay for better text readability */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        /* Kawaii Background Pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            
+            background-size: 50px 50px, 30px 30px, 40px 40px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Confetti Animation */
+        .confetti {
+            position: fixed;
+            width: 6px;
+            height: 6px;
+            background: #ff69b4;
+            animation: confetti-fall 4s linear infinite;
+            z-index: 1000;
+        }
+
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* Phone Container */
+        .phone-container {
+            max-width: 400px;
+            margin: 2rem auto;
+            padding: 2rem 1.5rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Header */
+        .kawaii-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .birthday-title {
+            font-size: 1.8rem;
+            background: linear-gradient(45deg, #ff69b4, #ff1493, #da70d6);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 10px rgba(255, 105, 180, 0.3);
+            margin-top: 20px;
+            white-space: nowrap;
+            overflow: visible;
+            width: max-content;
+            margin-left: -80px;
+            margin-right: 50px;
+        }
+
+        .kawaii-subtitle {
+            font-size: 0.9rem;
+            color: #8b4b8b;
+            font-style: italic;
+        }
+        .kawaii-subtitle2 {
+            font-size: 0.9rem;
+            color: #8b4b8b;
+            font-style: italic;
+            width: 500px;
+            margin-left: -80px;
+        }
+
+                 /* App Grid */
+         .app-grid {
+             display: grid;
+             grid-template-columns: repeat(2, 1fr);
+             gap: 2rem;
+             margin-bottom: 3rem;
+             justify-items: center;
+             max-width: 300px;
+             margin-left: auto;
+             margin-right: auto;
+         }
+
+        /* App Icons */
+        .app-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #ffffff 0%, #fff0f5 100%);
+            border-radius: 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 182, 193, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .app-icon:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 8px 25px rgba(255, 105, 180, 0.4);
+        }
+
+        .app-icon:active {
+            transform: scale(0.95);
+        }
+
+        /* Special App Styles */
+        .slime-app {
+            background: linear-gradient(135deg, #98fb98 0%, #90ee90 100%);
+        }
+
+        .lily-app {
+            background: linear-gradient(135deg, #ffffff 0%, #f0fff0 100%);
+        }
+
+        .music-app {
+            background: linear-gradient(135deg, #ffb6c1 0%, #ffc0cb 100%);
+        }
+
+        .memories-app {
+            background: linear-gradient(135deg, #dda0dd 0%, #e6e6fa 100%);
+        }
+
+        .shows-app {
+            background: linear-gradient(135deg, #87ceeb 0%, #b0e0e6 100%);
+        }
+
+        .tattoo-app {
+            background: linear-gradient(135deg, #f0e68c 0%, #fff8dc 100%);
+        }
+
+        /* App Icons Content */
+        .app-emoji {
+            font-size: 2.8rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .app-label {
+            font-size: 0.8rem;
+            color: #8b4b8b;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        /* Floating Lily Flowers */
+        .floating-lily {
+            position: fixed;
+            font-size: 1.2rem;
+            animation: lily-float 6s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 5;
+            opacity: 0.7;
+        }
+
+        .lily-1 { top: 15%; left: 5%; animation-delay: 0s; }
+        .lily-2 { top: 25%; right: 8%; animation-delay: 2s; }
+        .lily-3 { bottom: 30%; left: 10%; animation-delay: 4s; }
+        .lily-4 { bottom: 20%; right: 12%; animation-delay: 1s; }
+
+        @keyframes lily-float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-15px) rotate(5deg);
+            }
+        }
+
+        /* Floating Slimes */
+        .floating-slime {
+            position: fixed;
+            font-size: 1.5rem;
+            animation: slime-bounce 4s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 5;
+            opacity: 0.8;
+        }
+
+        .slime-1 { top: 20%; left: 15%; animation-delay: 0s; }
+        .slime-2 { top: 60%; right: 10%; animation-delay: 1.5s; }
+        .slime-3 { bottom: 40%; left: 8%; animation-delay: 3s; }
+
+                 @keyframes slime-bounce {
+             0%, 100% {
+                 transform: translateY(0px) scale(1);
+             }
+             25% {
+                 transform: translateY(-10px) scale(1.1);
+             }
+             75% {
+                 transform: translateY(5px) scale(0.95);
+             }
+         }
+
+         /* Side Lily of the Valley Decorations */
+         .side-lily-container {
+             position: fixed;
+             z-index: 3;
+             pointer-events: none;
+         }
+
+         .left-side {
+             top: 20%;
+             left: 5px;
+             transform: rotate(-15deg);
+         }
+
+         .right-side {
+             top: 25%;
+             right: 5px;
+             transform: rotate(15deg);
+         }
+
+         .left-side-bottom {
+             bottom: 30%;
+             left: 10px;
+             transform: rotate(-10deg);
+         }
+
+         .right-side-bottom {
+             bottom: 35%;
+             right: 10px;
+             transform: rotate(10deg);
+         }
+
+         .lily-stem-side {
+             width: 4px;
+             height: 120px;
+             background: linear-gradient(to top, #228B22, #90EE90);
+             border-radius: 2px;
+             margin: 0 auto;
+             position: relative;
+             animation: gentle-sway 6s ease-in-out infinite;
+         }
+
+         .lily-stem-side.small {
+             height: 80px;
+             width: 3px;
+         }
+
+         .lily-bell-cluster {
+             position: relative;
+             width: 100%;
+             margin-top: -5px;
+         }
+
+         .lily-bell-cluster.small .lily-bell {
+             font-size: 0.8rem;
+         }
+
+         .lily-bell {
+             position: absolute;
+             font-size: 1rem;
+             animation: gentle-sway 4s ease-in-out infinite;
+             text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+         }
+
+         .bell-top {
+             top: -15px;
+             left: 10px;
+             animation-delay: 0s;
+         }
+
+         .bell-mid {
+             top: -5px;
+             left: -5px;
+             animation-delay: 1s;
+         }
+
+         .bell-bottom {
+             top: 5px;
+             left: 8px;
+             animation-delay: 2s;
+         }
+
+         .lily-leaf-side {
+             position: absolute;
+             top: 60%;
+             left: -8px;
+             font-size: 1.2rem;
+             color: #90EE90;
+             animation: gentle-sway 5s ease-in-out infinite;
+             animation-delay: 1.5s;
+         }
+
+         .lily-leaf-side.small {
+             font-size: 1rem;
+             top: 50%;
+         }
+
+         @keyframes gentle-sway {
+             0%, 100% {
+                 transform: translateX(0px) rotate(0deg);
+             }
+             25% {
+                 transform: translateX(2px) rotate(1deg);
+             }
+             50% {
+                 transform: translateX(0px) rotate(0deg);
+             }
+             75% {
+                 transform: translateX(-2px) rotate(-1deg);
+             }
+         }
+
+        /* Content Modal */
+        .content-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .content-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 240, 245, 0.95) 100%);
+            border-radius: 25px;
+            padding: 2.5rem;
+            max-width: 350px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(255, 105, 180, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            position: relative;
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .content-modal.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-header {
+            font-size: 1.8rem;
+            background: linear-gradient(45deg, #ff69b4, #da70d6);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .modal-text {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #8b4b8b;
+            margin-bottom: 1rem;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #ff69b4;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+                 .close-modal:hover {
+             opacity: 1;
+         }
+
+         /* Shows Carousel Styles */
+         .shows-carousel-modal {
+             max-width: 700px;
+             max-height: 95vh;
+             overflow: hidden;
+         }
+
+         .carousel-container {
+             position: relative;
+             margin: 1rem 0;
+         }
+
+         .carousel-wrapper {
+             overflow: hidden;
+             border-radius: 15px;
+             background: rgba(255, 255, 255, 0.1);
+             box-shadow: 0 4px 15px rgba(255, 105, 180, 0.2);
+         }
+
+         .carousel-track {
+             display: flex;
+             transition: transform 0.3s ease;
+             width: 400%; /* 4 slides */
+         }
+
+         .carousel-slide {
+             width: 25%; /* 100% / 4 slides */
+             flex-shrink: 0;
+             text-align: center;
+             padding: 1rem;
+         }
+
+         .slide-image {
+             width: 100%;
+             height: 350px;
+             border-radius: 10px;
+             overflow: hidden;
+             margin-bottom: 1rem;
+             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+         }
+
+         .slide-image img {
+             width: 100%;
+             height: 100%;
+             object-fit: contain;
+             transition: transform 0.3s ease;
+         }
+
+         .slide-image:hover img {
+             transform: scale(1.05);
+         }
+
+         .slide-text h3 {
+             font-size: 1.2rem;
+             background: linear-gradient(45deg, #ff69b4, #da70d6);
+             background-clip: text;
+             -webkit-background-clip: text;
+             -webkit-text-fill-color: transparent;
+             margin-bottom: 0.5rem;
+         }
+
+         .slide-text p {
+             font-size: 0.85rem;
+             line-height: 1.4;
+             color: #8b4b8b;
+         }
+
+         .carousel-btn {
+             position: absolute;
+             top: 50%;
+             transform: translateY(-50%);
+             background: rgba(255, 255, 255, 0.9);
+             border: none;
+             width: 40px;
+             height: 40px;
+             border-radius: 50%;
+             font-size: 1.5rem;
+             color: #ff69b4;
+             cursor: pointer;
+             z-index: 10;
+             transition: all 0.3s ease;
+             box-shadow: 0 2px 10px rgba(255, 105, 180, 0.3);
+         }
+
+         .carousel-btn:hover {
+             background: rgba(255, 255, 255, 1);
+             transform: translateY(-50%) scale(1.1);
+             box-shadow: 0 4px 15px rgba(255, 105, 180, 0.5);
+         }
+
+         .prev-btn {
+             left: -20px;
+         }
+
+         .next-btn {
+             right: -20px;
+         }
+
+         .carousel-indicators {
+             display: flex;
+             justify-content: center;
+             gap: 0.5rem;
+             margin-top: 1rem;
+         }
+
+         .indicator {
+             width: 10px;
+             height: 10px;
+             border-radius: 50%;
+             background: rgba(255, 105, 180, 0.3);
+             cursor: pointer;
+             transition: all 0.3s ease;
+         }
+
+         .indicator.active,
+         .indicator:hover {
+             background: #ff69b4;
+             transform: scale(1.2);
+         }
+
+         /* Touch/Swipe Support */
+         .carousel-wrapper {
+             touch-action: pan-y;
+             -webkit-overflow-scrolling: touch;
+         }
+
+         /* Music Vertical Carousel Styles */
+         .music-carousel-modal {
+             max-width: 550px;
+             max-height: 85vh;
+         }
+
+         .vertical-carousel-container {
+             position: relative;
+             margin: 1rem 0;
+         }
+
+         .vertical-carousel-wrapper {
+             overflow: hidden;
+             border-radius: 15px;
+             height: 350px;
+             background: linear-gradient(135deg, rgba(255, 105, 180, 0.1), rgba(138, 43, 226, 0.1));
+             box-shadow: 0 4px 15px rgba(255, 105, 180, 0.2);
+         }
+
+         .vertical-carousel-track {
+             display: flex;
+             flex-direction: column;
+             transition: transform 0.4s ease;
+             height: 1400px; /* 4 slides * 350px */
+         }
+
+         .vertical-carousel-slide {
+             height: 350px;
+             flex-shrink: 0;
+             padding: 1.5rem;
+             display: flex;
+             align-items: center;
+             gap: 1rem;
+         }
+
+         .music-slide-image {
+             width: 150px;
+             height: 150px;
+             border-radius: 50%;
+             overflow: hidden;
+             box-shadow: 0 4px 20px rgba(255, 105, 180, 0.3);
+             flex-shrink: 0;
+         }
+
+         .music-slide-image img {
+             width: 100%;
+             height: 100%;
+             object-fit: cover;
+         }
+
+         .music-slide-text {
+             flex: 1;
+         }
+
+         .music-slide-text h3 {
+             font-size: 1.1rem;
+             background: linear-gradient(45deg, #ff69b4, #8a2be2);
+             background-clip: text;
+             -webkit-background-clip: text;
+             -webkit-text-fill-color: transparent;
+             margin-bottom: 0.5rem;
+         }
+
+         .music-slide-text p {
+             font-size: 0.85rem;
+             line-height: 1.4;
+             color: #8b4b8b;
+         }
+
+         .vertical-carousel-btn {
+             position: absolute;
+             left: 50%;
+             transform: translateX(-50%);
+             background: rgba(255, 255, 255, 0.9);
+             border: none;
+             width: 35px;
+             height: 35px;
+             border-radius: 50%;
+             font-size: 1.2rem;
+             color: #ff69b4;
+             cursor: pointer;
+             z-index: 10;
+             transition: all 0.3s ease;
+         }
+
+         .prev-btn-music {
+             top: -15px;
+         }
+
+         .next-btn-music {
+             bottom: -15px;
+         }
+
+         .vertical-carousel-indicators {
+             display: flex;
+             flex-direction: column;
+             gap: 0.5rem;
+             position: absolute;
+             right: -30px;
+             top: 50%;
+             transform: translateY(-50%);
+         }
+
+         .vertical-indicator {
+             width: 8px;
+             height: 20px;
+             border-radius: 4px;
+             background: rgba(255, 105, 180, 0.3);
+             cursor: pointer;
+             transition: all 0.3s ease;
+         }
+
+         .vertical-indicator.active,
+         .vertical-indicator:hover {
+             background: #ff69b4;
+         }
+
+         /* Tattoo Fade Carousel Styles */
+         .tattoo-carousel-modal {
+             max-width: 500px;
+             max-height: 85vh;
+         }
+
+         .fade-carousel-container {
+             position: relative;
+             margin: 1rem 0;
+         }
+
+         .fade-carousel-wrapper {
+             position: relative;
+             height: 400px;
+             border-radius: 15px;
+             overflow: hidden;
+             background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 105, 180, 0.1));
+             box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+         }
+
+         .fade-carousel-track {
+             position: relative;
+             width: 100%;
+             height: 100%;
+         }
+
+         .fade-carousel-slide {
+             position: absolute;
+             top: 0;
+             left: 0;
+             width: 100%;
+             height: 100%;
+             opacity: 0;
+             transition: opacity 0.5s ease;
+             padding: 1.5rem;
+             display: flex;
+             flex-direction: column;
+             align-items: center;
+             justify-content: center;
+         }
+
+         .fade-carousel-slide.active {
+             opacity: 1;
+         }
+
+         .tattoo-slide-image {
+             width: 250px;
+             height: 250px;
+             border-radius: 15px;
+             overflow: hidden;
+             margin-bottom: 1rem;
+             box-shadow: 0 6px 25px rgba(255, 215, 0, 0.4);
+             border: 3px solid rgba(255, 255, 255, 0.4);
+         }
+
+         .tattoo-slide-image img {
+             width: 100%;
+             height: 100%;
+             object-fit: cover;
+             transition: transform 0.3s ease;
+         }
+
+         .tattoo-slide-image:hover img {
+             transform: scale(1.05);
+         }
+
+         .tattoo-slide-text {
+             text-align: center;
+         }
+
+         .tattoo-slide-text h3 {
+             font-size: 1.2rem;
+             background: linear-gradient(45deg, #ffd700, #ff69b4);
+             background-clip: text;
+             -webkit-background-clip: text;
+             -webkit-text-fill-color: transparent;
+             margin-bottom: 0.5rem;
+         }
+
+         .tattoo-slide-text p {
+             font-size: 0.9rem;
+             line-height: 1.4;
+             color: #8b4b8b;
+         }
+
+         .fade-carousel-btn {
+             position: absolute;
+             top: 50%;
+             transform: translateY(-50%);
+             background: rgba(255, 215, 0, 0.9);
+             border: none;
+             width: 40px;
+             height: 40px;
+             border-radius: 50%;
+             font-size: 1.5rem;
+             color: #fff;
+             cursor: pointer;
+             z-index: 10;
+             transition: all 0.3s ease;
+             box-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
+         }
+
+         .fade-carousel-btn:hover {
+             background: rgba(255, 215, 0, 1);
+             transform: translateY(-50%) scale(1.1);
+         }
+
+         .prev-btn-tattoo {
+             left: -20px;
+         }
+
+         .next-btn-tattoo {
+             right: -20px;
+         }
+
+         .fade-carousel-indicators {
+             display: flex;
+             justify-content: center;
+             gap: 0.5rem;
+             margin-top: 1rem;
+         }
+
+         .fade-indicator {
+             width: 12px;
+             height: 12px;
+             border-radius: 50%;
+             background: rgba(255, 215, 0, 0.3);
+             cursor: pointer;
+             transition: all 0.3s ease;
+         }
+
+         .fade-indicator.active,
+         .fade-indicator:hover {
+             background: #ffd700;
+             transform: scale(1.2);
+         }
+
+         /* Memories Polaroid Carousel Styles */
+         .memories-carousel-modal {
+             max-width: 480px;
+             max-height: 85vh;
+         }
+
+         .polaroid-carousel-container {
+             position: relative;
+             margin: 1rem 0;
+         }
+
+         .polaroid-carousel-wrapper {
+             overflow: hidden;
+             border-radius: 20px;
+             height: 450px;
+             background: linear-gradient(135deg, rgba(255, 192, 203, 0.1), rgba(221, 160, 221, 0.1));
+             box-shadow: 0 4px 15px rgba(221, 160, 221, 0.3);
+         }
+
+         .polaroid-carousel-track {
+             display: flex;
+             transition: transform 0.5s ease;
+             width: 400%; /* 4 slides */
+         }
+
+         .polaroid-carousel-slide {
+             width: 25%;
+             flex-shrink: 0;
+             padding: 2rem;
+             display: flex;
+             align-items: center;
+             justify-content: center;
+         }
+
+         .polaroid-frame {
+             background: #ffffff;
+             padding: 1rem 1rem 2rem 1rem;
+             border-radius: 10px;
+             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+             transform: rotate(-2deg);
+             transition: transform 0.3s ease;
+             max-width: 280px;
+         }
+
+         .polaroid-frame:hover {
+             transform: rotate(0deg) scale(1.02);
+         }
+
+         .polaroid-image {
+             width: 100%;
+             height: 200px;
+             border-radius: 5px;
+             overflow: hidden;
+             margin-bottom: 1rem;
+             background: #f0f0f0;
+         }
+
+         .polaroid-image img {
+             width: 100%;
+             height: 100%;
+             object-fit: cover;
+         }
+
+         .polaroid-text {
+             text-align: center;
+         }
+
+         .polaroid-text h3 {
+             font-size: 1.1rem;
+             background: linear-gradient(45deg, #dda0dd, #ff69b4);
+             background-clip: text;
+             -webkit-background-clip: text;
+             -webkit-text-fill-color: transparent;
+             margin-bottom: 0.5rem;
+         }
+
+         .polaroid-text p {
+             font-size: 0.85rem;
+             line-height: 1.4;
+             color: #8b4b8b;
+         }
+
+         .polaroid-carousel-btn {
+             position: absolute;
+             top: 50%;
+             transform: translateY(-50%);
+             background: rgba(221, 160, 221, 0.9);
+             border: none;
+             width: 40px;
+             height: 40px;
+             border-radius: 50%;
+             font-size: 1.5rem;
+             color: #fff;
+             cursor: pointer;
+             z-index: 10;
+             transition: all 0.3s ease;
+             box-shadow: 0 2px 10px rgba(221, 160, 221, 0.3);
+         }
+
+         .polaroid-carousel-btn:hover {
+             background: rgba(221, 160, 221, 1);
+             transform: translateY(-50%) scale(1.1);
+         }
+
+         .prev-btn-memories {
+             left: -20px;
+         }
+
+         .next-btn-memories {
+             right: -20px;
+         }
+
+         .polaroid-carousel-indicators {
+             display: flex;
+             justify-content: center;
+             gap: 0.5rem;
+             margin-top: 1rem;
+         }
+
+         .polaroid-indicator {
+             width: 10px;
+             height: 10px;
+             border-radius: 50%;
+             background: rgba(221, 160, 221, 0.3);
+             cursor: pointer;
+             transition: all 0.3s ease;
+         }
+
+         .polaroid-indicator.active,
+         .polaroid-indicator:hover {
+             background: #dda0dd;
+             transform: scale(1.2);
+         }
+
+        /* Dock */
+        .kawaii-dock {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            margin-top: 1rem;
+        }
+
+        .dock-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #ffffff 0%, #fff0f5 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(255, 182, 193, 0.3);
+        }
+
+        .dock-icon:hover {
+            transform: scale(1.2) translateY(-3px);
+        }
+
+        /* Search Bar */
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin: 1.5rem 0;
+        }
+
+        .search-bar {
+            width: 200px;
+            padding: 0.8rem 1.2rem;
+            border: none;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            font-size: 0.9rem;
+            color: #8b4b8b;
+            text-align: center;
+            outline: none;
+            box-shadow: 0 2px 10px rgba(255, 182, 193, 0.2);
+        }
+
+        .search-bar::placeholder {
+            color: #b8860b;
+            opacity: 0.7;
+        }
+
+        /* Music Control Button */
+        .music-control {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .music-control:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(255, 105, 180, 0.5);
+        }
+
+        .music-control.playing {
+            background: linear-gradient(135deg, #ff69b4, #da70d6);
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .phone-container {
+                padding: 1rem;
+            }
+            
+            .birthday-title {
+                font-size: 1.5rem;
+            }
+            
+            .app-grid {
+                gap: 1rem;
+            }
+            
+            .app-icon {
+                width: 70px;
+                height: 70px;
+            }
+
+            .music-control {
+                top: 15px;
+                right: 15px;
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Music -->
+    <audio id="background-music" autoplay loop preload="auto" style="display: none;">
+        <source src="images/background-music.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Music Control Button -->
+    <button id="music-toggle" class="music-control" onclick="toggleMusic()">🎵</button>
+
+    <!-- Floating Elements -->
+    <div class="floating-lily lily-1">🤍</div>
+    <div class="floating-lily lily-2">🤍</div>
+    <div class="floating-lily lily-3">🤍</div>
+    <div class="floating-lily lily-4">🤍</div>
+    
+    <div class="floating-slime slime-1">💚</div>
+    <div class="floating-slime slime-2">🟢</div>
+    <div class="floating-slime slime-3">💚</div>
+
+    <!-- Side Lily of the Valley Decorations -->
+    <div class="side-lily-container left-side">
+        <div class="lily-stem-side"></div>
+        <div class="lily-bell-cluster">
+            <div class="lily-bell bell-top">🤍</div>
+            <div class="lily-bell bell-mid">🤍</div>
+            <div class="lily-bell bell-bottom">🤍</div>
+        </div>
+        <div class="lily-leaf-side">🌿</div>
+    </div>
+
+    <div class="side-lily-container right-side">
+        <div class="lily-stem-side"></div>
+        <div class="lily-bell-cluster">
+            <div class="lily-bell bell-top">🤍</div>
+            <div class="lily-bell bell-mid">🤍</div>
+            <div class="lily-bell bell-bottom">🤍</div>
+        </div>
+        <div class="lily-leaf-side">🌿</div>
+    </div>
+
+    <div class="side-lily-container left-side-bottom">
+        <div class="lily-stem-side small"></div>
+        <div class="lily-bell-cluster small">
+            <div class="lily-bell bell-top">🤍</div>
+            <div class="lily-bell bell-mid">🤍</div>
+        </div>
+        <div class="lily-leaf-side small">🌿</div>
+    </div>
+
+    <div class="side-lily-container right-side-bottom">
+        <div class="lily-stem-side small"></div>
+        <div class="lily-bell-cluster small">
+            <div class="lily-bell bell-top">🤍</div>
+            <div class="lily-bell bell-mid">🤍</div>
+        </div>
+        <div class="lily-leaf-side small">🌿</div>
+    </div>
+
+    <!-- Phone Container -->
+    <div class="phone-container">
+        <!-- Header -->
+        <div class="kawaii-header">
+            <h1 class="birthday-title">🎉 Happy Birthday My Fav Robot! 🎉</h1>
+            <p class="kawaii-subtitle">U wanted to make me one, so here's urs hh </p>
+            <p class="kawaii-subtitle2">idk wtf do ppl give in bdays so haki hdchi w stfu , its candy hh, oh and the last one (brain candy) is just memories u gotta cherich since u gettin old hh</p>
+        </div>
+
+        <!-- App Grid -->
+        <div class="app-grid">
+            <div class="app-icon shows-app" onclick="openModal('shows')">
+                <div class="app-emoji">📺</div>
+                <div class="app-label">Eye Candy</div>
+            </div>
+
+            <div class="app-icon music-app" onclick="openModal('music')">
+                <div class="app-emoji">🎵</div>
+                <div class="app-label">Soul Candy</div>
+            </div>
+
+            <div class="app-icon tattoo-app" onclick="openModal('tattoos')">
+                <div class="app-emoji">🎨</div>
+                <div class="app-label">Ink Candy</div>
+            </div>
+
+            <div class="app-icon memories-app" onclick="openModal('memories')">
+                <div class="app-emoji">💕</div>
+                <div class="app-label">Brain Candy</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Content Modals -->
+    <div id="shows-modal" class="content-modal">
+        <div class="modal-content shows-carousel-modal">
+            <button class="close-modal" onclick="closeModal()">&times;</button>
+            <h2 class="modal-header">📺 Bootiful Shows</h2>
+            
+            <!-- Image Carousel -->
+            <div class="carousel-container">
+                <button class="carousel-btn prev-btn" onclick="previousSlide()">‹</button>
+                <div class="carousel-wrapper">
+                    <div class="carousel-track" id="shows-carousel">
+                        <!-- Slide 1 -->
+                        <div class="carousel-slide active">
+                            <div class="slide-image">
+                                <img src="images/show1.jpg" alt="Favorite Show 1">
+                            </div>
+                            <div class="slide-text">
+                                <h3>Us (im dean)</h3>
+                                <p>i let u have sam even tho u not tall but its ur birthday so wel act like u are hhh</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Slide 2 -->
+                        <div class="carousel-slide">
+                            <div class="slide-image">
+                                <img src="images/show2.jpg" alt="Favorite Show 2">
+                            </div>
+                            <div class="slide-text">
+                                <h3>Us again?</h3>
+                                <p>ik this is ur day but im a narcissit i need to be the center of the universe or else il die hhhh</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Slide 3 -->
+                        <div class="carousel-slide">
+                            <div class="slide-image">
+                                <img src="images/show3.jpg" alt="Favorite Show 3">
+                            </div>
+                            <div class="slide-text">
+                                <h3>Guess who again hh</h3>
+                                <p>il stop. (if u admit im dean)</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Slide 4 -->
+                        <div class="carousel-slide">
+                            <div class="slide-image">
+                                <img src="images/show4.jpg" alt="Favorite Show 4">
+                            </div>
+                            <div class="slide-text">
+                                <h3>Us after ur bday hh</h3>
+                                <p>in case u dont got any man close to u to explain to u, im laughin n ure mad, ure amy, amy is the girl whos angy cuz jake made ah u get it. mhm im dean hh</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-btn next-btn" onclick="nextSlide()">›</button>
+            </div>
+            
+            <!-- Carousel Indicators -->
+            <div class="carousel-indicators">
+                <span class="indicator active" onclick="goToSlide(0)"></span>
+                <span class="indicator" onclick="goToSlide(1)"></span>
+                <span class="indicator" onclick="goToSlide(2)"></span>
+                <span class="indicator" onclick="goToSlide(3)"></span>
+            </div>
+        </div>
+    </div>
+
+    <div id="music-modal" class="content-modal">
+        <div class="modal-content music-carousel-modal">
+            <button class="close-modal" onclick="closeModal()">&times;</button>
+            <h2 class="modal-header">🎵 Vibes</h2>
+            
+            <!-- Vertical Carousel -->
+            <div class="vertical-carousel-container">
+                <button class="vertical-carousel-btn prev-btn-music" onclick="previousMusicSlide()">↑</button>
+                <div class="vertical-carousel-wrapper">
+                    <div class="vertical-carousel-track" id="music-carousel">
+                        <!-- Music Slide 1 -->
+                        <div class="vertical-carousel-slide active">
+                            <div class="music-slide-image">
+                                <img src="images/music1.png" alt="Music 1">
+                            </div>
+                            <div class="music-slide-text">
+                                <h3>🎧 Dynamite by Kublaii</h3>
+                                <p>Awesome song, Chill n Dreamy w im sure it can cure something i dont have a name for hh</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Music Slide 2 -->
+                        <div class="vertical-carousel-slide">
+                            <div class="music-slide-image">
+                                <img src="images/music2.png" alt="Music 2">
+                            </div>
+                            <div class="music-slide-text">
+                                <h3>🎵 POOR GEORGE by James Supercave</h3>
+                                <p>POOOOOOOOOOOOOOOOOOOOOR GEORGE</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Music Slide 3 -->
+                        <div class="vertical-carousel-slide">
+                            <div class="music-slide-image">
+                                <img src="images/music3.png" alt="Music 3">
+                            </div>
+                            <div class="music-slide-text">
+                                <h3>🎤 Blue by Frizzy P & Mr Cole</h3>
+                                <p>Movin.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Music Slide 4 -->
+                        <div class="vertical-carousel-slide">
+                            <div class="music-slide-image">
+                                <img src="images/music4.png" alt="Music 4">
+                            </div>
+                            <div class="music-slide-text">
+                                <h3>🎶 Ready To Rock by Oddisee</h3>
+                                <p>Song m9wdaaaaa mn Serie m9wdaaaaa, dont listen to it 7ta nwrik scene dylha bch t7si biha fully hh</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="vertical-carousel-btn next-btn-music" onclick="nextMusicSlide()">↓</button>
+            </div>
+            
+            <!-- Vertical Indicators -->
+            <div class="vertical-carousel-indicators">
+                <span class="vertical-indicator active" onclick="goToMusicSlide(0)"></span>
+                <span class="vertical-indicator" onclick="goToMusicSlide(1)"></span>
+                <span class="vertical-indicator" onclick="goToMusicSlide(2)"></span>
+                <span class="vertical-indicator" onclick="goToMusicSlide(3)"></span>
+            </div>
+        </div>
+    </div>
+
+    <div id="tattoos-modal" class="content-modal">
+        <div class="modal-content tattoo-carousel-modal">
+            <button class="close-modal" onclick="closeModal()">&times;</button>
+            <h2 class="modal-header">🎨 Ink</h2>
+            
+            <!-- Fade Carousel -->
+            <div class="fade-carousel-container">
+                <div class="fade-carousel-wrapper">
+                    <div class="fade-carousel-track" id="tattoo-carousel">
+                        <!-- Tattoo Slide 1 -->
+                        <div class="fade-carousel-slide active">
+                            <div class="tattoo-slide-image">
+                                <img src="images/tattoo1.jpg" alt="Tattoo 1">
+                            </div>
+                            <div class="tattoo-slide-text">
+                                <h3>✨Tattoo rec, this is my fav✨</h3>
+                                <p>do this one, its awesome, i love it</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Tattoo Slide 2 -->
+                        <div class="fade-carousel-slide">
+                            <div class="tattoo-slide-image">
+                                <img src="images/tattoo2.jpg" alt="Tattoo 2">
+                            </div>
+                            <div class="tattoo-slide-text">
+                                <h3>✨ Lilly of the valley</h3>
+                                <p>u like lillies so this one is perfect</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Tattoo Slide 3 -->
+                        <div class="fade-carousel-slide">
+                            <div class="tattoo-slide-image">
+                                <img src="images/tattoo3.jpg" alt="Tattoo 3">
+                            </div>
+                            <div class="tattoo-slide-text">
+                                <h3>Lilly of Death</h3>
+                                <p>hh i bet u like the name more than the tattoo hh</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Tattoo Slide 4 -->
+                        <div class="fade-carousel-slide">
+                            <div class="tattoo-slide-image">
+                                <img src="images/tattoo4.jpg" alt="Tattoo 4">
+                            </div>
+                            <div class="tattoo-slide-text">
+                                <h3>🎨 Perfection 🎨</h3>
+                                <p>id see this il do unexplainable things to get to touch it hh</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Side Navigation Buttons -->
+                <button class="fade-carousel-btn prev-btn-tattoo" onclick="previousTattooSlide()">‹</button>
+                <button class="fade-carousel-btn next-btn-tattoo" onclick="nextTattooSlide()">›</button>
+            </div>
+            
+            <!-- Carousel Indicators -->
+            <div class="fade-carousel-indicators">
+                <span class="fade-indicator active" onclick="goToTattooSlide(0)"></span>
+                <span class="fade-indicator" onclick="goToTattooSlide(1)"></span>
+                <span class="fade-indicator" onclick="goToTattooSlide(2)"></span>
+                <span class="fade-indicator" onclick="goToTattooSlide(3)"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Zoom Modal -->
+    <div id="image-zoom-modal" class="image-modal">
+        <div class="image-modal-content">
+            <button class="close-image-modal" onclick="closeImageModal()">&times;</button>
+            <img id="zoomed-image" src="" alt="Zoomed tattoo">
+        </div>
+    </div>
+
+    <div id="memories-modal" class="content-modal">
+        <div class="modal-content memories-carousel-modal">
+            <button class="close-modal" onclick="closeModal()">&times;</button>
+            <h2 class="modal-header">💕 HHHHHHH</h2>
+            
+            <!-- Polaroid Carousel -->
+            <div class="polaroid-carousel-container">
+                <div class="polaroid-carousel-wrapper">
+                    <div class="polaroid-carousel-track" id="memories-carousel">
+                        <!-- Memory Slide 1 -->
+                        <div class="polaroid-carousel-slide active">
+                            <div class="polaroid-frame">
+                                <div class="polaroid-image">
+                                    <img src="images/memory1.png" alt="Memory 1">
+                                </div>
+                                <div class="polaroid-text">
+                                    <h3>Remember this HHHHHH</h3>
+                                    <p>When u lost ur gag privileges HHHHHHHHHHHHHHHHHHHH. ofc u remember u dont need me to remind u hhhhhhhhh</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Memory Slide 2 -->
+                        <div class="polaroid-carousel-slide">
+                            <div class="polaroid-frame">
+                                <div class="polaroid-image">
+                                    <img src="images/memory2.png" alt="Memory 2">
+                                </div>
+                                <div class="polaroid-text">
+                                    <h3>✨ This happened btw</h3>
+                                    <p>just wnana remind u that that happened hh, n yes we should continue the game.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Memory Slide 3 -->
+                        <div class="polaroid-carousel-slide">
+                            <div class="polaroid-frame">
+                                <div class="polaroid-image">
+                                    <img src="images/memory3.jpg" alt="Memory 3">
+                                </div>
+                                <div class="polaroid-text">
+                                    <h3>🌟 AAh narii legendary times 🌟</h3>
+                                    <p>Remember when u top fragged ??? ofc u do. that shit is legendary it only happens once in 3 years hh</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Memory Slide 4 -->
+                        <div class="polaroid-carousel-slide">
+                            <div class="polaroid-frame">
+                                <div class="polaroid-image">
+                                    <img src="images/memory4.jpg" alt="Memory 4">
+                                </div>
+                                <div class="polaroid-text">
+                                    <h3>💖 OHHH and thiiss</h3>
+                                    <p>Remember this? when we slept like babies f7l hka? u dont ? but its a memory we can make, im down....... When hh</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Navigation Dots -->
+                <button class="polaroid-carousel-btn prev-btn-memories" onclick="previousMemorySlide()">‹</button>
+                <button class="polaroid-carousel-btn next-btn-memories" onclick="nextMemorySlide()">›</button>
+            </div>
+            
+            <!-- Polaroid Indicators -->
+            <div class="polaroid-carousel-indicators">
+                <span class="polaroid-indicator active" onclick="goToMemorySlide(0)"></span>
+                <span class="polaroid-indicator" onclick="goToMemorySlide(1)"></span>
+                <span class="polaroid-indicator" onclick="goToMemorySlide(2)"></span>
+                <span class="polaroid-indicator" onclick="goToMemorySlide(3)"></span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Confetti Animation
+        function createConfetti() {
+            const colors = ['#ff69b4', '#da70d6', '#98fb98', '#ffffff', '#ffb6c1'];
+            
+            for (let i = 0; i < 25; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.animationDelay = Math.random() * 3 + 's';
+                    confetti.style.animationDuration = (Math.random() * 2 + 3) + 's';
+                    document.body.appendChild(confetti);
+
+                    setTimeout(() => {
+                        confetti.remove();
+                    }, 6000);
+                }, i * 200);
+            }
+        }
+
+        // Modal Functions
+        function openModal(type) {
+            const modal = document.getElementById(type + '-modal');
+            if (modal) {
+                modal.classList.add('active');
+            }
+        }
+
+        function closeModal() {
+            const modals = document.querySelectorAll('.content-modal');
+            modals.forEach(modal => {
+                modal.classList.remove('active');
+            });
+        }
+
+        // Close modal when clicking outside
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('content-modal')) {
+                closeModal();
+            }
+        });
+
+        // App icon touch effects
+        document.querySelectorAll('.app-icon, .dock-icon').forEach(icon => {
+            icon.addEventListener('touchstart', function() {
+                this.style.transform = 'scale(0.95)';
+            });
+            
+            icon.addEventListener('touchend', function() {
+                this.style.transform = '';
+            });
+        });
+
+        // Music functionality
+        let isPlaying = false;
+        const backgroundMusic = document.getElementById('background-music');
+        const musicToggle = document.getElementById('music-toggle');
+
+        function toggleMusic() {
+            if (isPlaying) {
+                backgroundMusic.pause();
+                musicToggle.textContent = '🎵';
+                musicToggle.classList.remove('playing');
+                isPlaying = false;
+            } else {
+                backgroundMusic.play().catch(e => {
+                    console.log('Autoplay prevented:', e);
+                });
+                musicToggle.textContent = '🔊';
+                musicToggle.classList.add('playing');
+                isPlaying = true;
+            }
+        }
+
+        // Try to start music when page loads
+        function startMusic() {
+            backgroundMusic.play().then(() => {
+                musicToggle.textContent = '🔊';
+                musicToggle.classList.add('playing');
+                isPlaying = true;
+            }).catch(e => {
+                // Autoplay blocked, user needs to interact
+                console.log('Autoplay blocked, user interaction required');
+                musicToggle.textContent = '🎵';
+                musicToggle.classList.remove('playing');
+                isPlaying = false;
+            });
+        }
+
+        // Trigger confetti and try to start music on page load
+        window.addEventListener('load', () => {
+            setTimeout(createConfetti, 800);
+            setTimeout(startMusic, 1000);
+        });
+
+        // Random sparkle effect
+        setInterval(() => {
+            const sparkle = document.createElement('div');
+            sparkle.innerHTML = '✨';
+            sparkle.style.position = 'fixed';
+            sparkle.style.left = Math.random() * 100 + '%';
+            sparkle.style.top = Math.random() * 100 + '%';
+            sparkle.style.fontSize = '1rem';
+            sparkle.style.pointerEvents = 'none';
+            sparkle.style.zIndex = '5';
+            sparkle.style.animation = 'lily-float 2s ease-out forwards';
+            document.body.appendChild(sparkle);
+            
+            setTimeout(() => {
+                sparkle.remove();
+            }, 2000);
+        }, 3000);
+
+        // Easter egg - shake phone effect
+        let shakeCount = 0;
+        window.addEventListener('devicemotion', (e) => {
+            if (e.acceleration && Math.abs(e.acceleration.x) > 15) {
+                shakeCount++;
+                if (shakeCount > 3) {
+                    createConfetti();
+                    shakeCount = 0;
+                }
+            }
+        });
+
+        // Carousel functionality
+        let currentSlide = 0;
+        const totalSlides = 4;
+
+        function updateCarousel() {
+            const track = document.getElementById('shows-carousel');
+            const indicators = document.querySelectorAll('.indicator');
+            
+            // Move the track
+            const translateX = -currentSlide * 25; // 25% per slide
+            track.style.transform = `translateX(${translateX}%)`;
+            
+            // Update indicators
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
+        }
+
+        function previousSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+        }
+
+        function goToSlide(slideIndex) {
+            currentSlide = slideIndex;
+            updateCarousel();
+        }
+
+        // Touch/Swipe functionality for mobile
+        let startX = 0;
+        let isDragging = false;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const carouselWrapper = document.querySelector('.carousel-wrapper');
+            
+            if (carouselWrapper) {
+                carouselWrapper.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].clientX;
+                    isDragging = true;
+                });
+
+                carouselWrapper.addEventListener('touchmove', (e) => {
+                    if (!isDragging) return;
+                    e.preventDefault(); // Prevent scrolling
+                });
+
+                carouselWrapper.addEventListener('touchend', (e) => {
+                    if (!isDragging) return;
+                    isDragging = false;
+                    
+                    const endX = e.changedTouches[0].clientX;
+                    const diffX = startX - endX;
+                    
+                    // Swipe threshold
+                    if (Math.abs(diffX) > 50) {
+                        if (diffX > 0) {
+                            nextSlide(); // Swipe left -> next
+                        } else {
+                            previousSlide(); // Swipe right -> previous
+                        }
+                    }
+                });
+
+                // Mouse drag support for desktop
+                carouselWrapper.addEventListener('mousedown', (e) => {
+                    startX = e.clientX;
+                    isDragging = true;
+                    carouselWrapper.style.cursor = 'grabbing';
+                });
+
+                carouselWrapper.addEventListener('mousemove', (e) => {
+                    if (!isDragging) return;
+                    e.preventDefault();
+                });
+
+                carouselWrapper.addEventListener('mouseup', (e) => {
+                    if (!isDragging) return;
+                    isDragging = false;
+                    carouselWrapper.style.cursor = 'grab';
+                    
+                    const endX = e.clientX;
+                    const diffX = startX - endX;
+                    
+                    if (Math.abs(diffX) > 50) {
+                        if (diffX > 0) {
+                            nextSlide();
+                        } else {
+                            previousSlide();
+                        }
+                    }
+                });
+
+                                 carouselWrapper.addEventListener('mouseleave', () => {
+                     isDragging = false;
+                     carouselWrapper.style.cursor = 'grab';
+                 });
+             }
+         });
+
+         // Image zoom modal functions
+         function openImageModal(imageSrc) {
+             const modal = document.getElementById('image-zoom-modal');
+             const zoomedImage = document.getElementById('zoomed-image');
+             zoomedImage.src = imageSrc;
+             modal.classList.add('active');
+         }
+
+         function closeImageModal() {
+             const modal = document.getElementById('image-zoom-modal');
+             modal.classList.remove('active');
+         }
+
+         // Music Vertical Carousel functionality
+         let currentMusicSlide = 0;
+         const totalMusicSlides = 4;
+
+         function updateMusicCarousel() {
+             const track = document.getElementById('music-carousel');
+             const indicators = document.querySelectorAll('.vertical-indicator');
+             
+             const translateY = -currentMusicSlide * 350; // 350px per slide
+             track.style.transform = `translateY(${translateY}px)`;
+             
+             indicators.forEach((indicator, index) => {
+                 indicator.classList.toggle('active', index === currentMusicSlide);
+             });
+         }
+
+         function nextMusicSlide() {
+             currentMusicSlide = (currentMusicSlide + 1) % totalMusicSlides;
+             updateMusicCarousel();
+         }
+
+         function previousMusicSlide() {
+             currentMusicSlide = (currentMusicSlide - 1 + totalMusicSlides) % totalMusicSlides;
+             updateMusicCarousel();
+         }
+
+         function goToMusicSlide(slideIndex) {
+             currentMusicSlide = slideIndex;
+             updateMusicCarousel();
+         }
+
+         // Tattoo Fade Carousel functionality
+         let currentTattooSlide = 0;
+         const totalTattooSlides = 4;
+
+         function updateTattooCarousel() {
+             const slides = document.querySelectorAll('.fade-carousel-slide');
+             const indicators = document.querySelectorAll('.fade-indicator');
+             
+             slides.forEach((slide, index) => {
+                 slide.classList.toggle('active', index === currentTattooSlide);
+             });
+             
+             indicators.forEach((indicator, index) => {
+                 indicator.classList.toggle('active', index === currentTattooSlide);
+             });
+         }
+
+         function nextTattooSlide() {
+             currentTattooSlide = (currentTattooSlide + 1) % totalTattooSlides;
+             updateTattooCarousel();
+         }
+
+         function previousTattooSlide() {
+             currentTattooSlide = (currentTattooSlide - 1 + totalTattooSlides) % totalTattooSlides;
+             updateTattooCarousel();
+         }
+
+         function goToTattooSlide(slideIndex) {
+             currentTattooSlide = slideIndex;
+             updateTattooCarousel();
+         }
+
+         // Memories Polaroid Carousel functionality
+         let currentMemorySlide = 0;
+         const totalMemorySlides = 4;
+
+         function updateMemoryCarousel() {
+             const track = document.getElementById('memories-carousel');
+             const indicators = document.querySelectorAll('.polaroid-indicator');
+             
+             const translateX = -currentMemorySlide * 25; // 25% per slide
+             track.style.transform = `translateX(${translateX}%)`;
+             
+             indicators.forEach((indicator, index) => {
+                 indicator.classList.toggle('active', index === currentMemorySlide);
+             });
+         }
+
+         function nextMemorySlide() {
+             currentMemorySlide = (currentMemorySlide + 1) % totalMemorySlides;
+             updateMemoryCarousel();
+         }
+
+         function previousMemorySlide() {
+             currentMemorySlide = (currentMemorySlide - 1 + totalMemorySlides) % totalMemorySlides;
+             updateMemoryCarousel();
+         }
+
+         function goToMemorySlide(slideIndex) {
+             currentMemorySlide = slideIndex;
+             updateMemoryCarousel();
+         }
+    </script>
+</body>
+</html> 
